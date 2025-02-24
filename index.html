@@ -2,157 +2,120 @@
  <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   Tune Talk - Music Player
-  </title>
-  <script src="https://cdn.tailwindcss.com">
-  </script>
+  <title>Tune Talk - Music Player</title>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css"/>
   <script src="index.js"></script>
  </head>
 
- <body class="bg-Hex: #1DB954
- RGB: (29, 185, 84) text-white">
-  <header class="w-full bg-gray-800 p-4 flex items-center justify-between">
-   <div class="flex items-center space-x-4">
-    <img alt="Tune Talk logo with musical notes" class="w-12 h-12" height="70" src="/images/tune talk logo.png" width="70"/>
-    <h1 class="text-2xl font-bold">
-     Tune Talk
-    </h1>
-   </div>
-   <nav class="space-x-4">
-    <a class="text-white hover:text-white" href="#about">
-     About
-    </a>
-    <a class="text-white hover:text-white" href="#features">
-     Features
-    </a>
-    <a class="text-white hover:text-white" href="#contact">
-     Contact Us
-    </a>
-    <a class="text-white hover:text-white" href="#login">
-     Login
-    </a>
-   </nav>
-  </header>
-  <main class="min-h-screen flex flex-col items-center justify-center">
-   <div class="bg-black rounded-lg shadow-lg p-6 w-full max-w-md">
-    <div class="flex items-center justify-between mb-4">
-     <h2 class="text-2xl font-bold">
-      Now Playing
-     </h2>
-     <i class="fas fa-music text-2xl">
-     </i>
+ <body class="bg-Hex: #1DB954 RGB: (29, 185, 84) text-white">
+    <header class="header-container w-full bg-gray-800 p-4 flex items-center justify-between">
+        <div class="logo-container flex items-center space-x-4">
+          <img alt="Tune Talk logo with musical notes" class="logo-image w-12 h-12" height="70" src="/images/tune talk logo.png" width="70"/>
+          <h1 class="logo-text text-2xl font-bold">Tune Talk</h1>
+        </div>
+        <div class="search-bar-container flex items-center mx-4 flex-grow">
+          <div class="relative w-full">
+            <input type="text" class="search-bar w-full p-2 pl-10 rounded-full bg-gray-700 text-white focus:outline-none focus:ring-2 focus:ring-green-500" placeholder="Search for songs, artists, albums..."/>
+            <i class="fas fa-search absolute left-3 top-3 text-gray-400"></i>
+            <!-- Dropdown for search suggestions -->
+            <div class="search-suggestions absolute w-full bg-gray-700 rounded-lg mt-2 hidden">
+              <ul class="py-2">
+                <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Song 1</li>
+                <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Artist 1</li>
+                <li class="px-4 py-2 hover:bg-gray-600 cursor-pointer">Album 1</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <nav class="navigation-links space-x-4">
+          <a class="nav-link text-white hover:text-white" href="#about">About</a>
+          <a class="nav-link text-white hover:text-white" href="#features">Features</a>
+          <a class="nav-link text-white hover:text-white" href="#contact">Contact Us</a>
+          <a class="nav-link text-white hover:text-white" href="#login">Login</a>
+        </nav>
+        <!-- Theme Toggle Button -->
+        <button class="theme-toggle p-2 rounded-full bg-gray-700 hover:bg-gray-600 focus:outline-none">
+          <i class="fas fa-moon text-white"></i>
+        </button>
+      </header>
+  <main class="main-content min-h-screen flex flex-col items-center justify-center">
+   <div class="music-player-container bg-black rounded-lg shadow-lg p-6 w-full max-w-md">
+    <div class="player-header flex items-center justify-between mb-4">
+     <h2 class="player-title text-2xl font-bold">Now Playing</h2>
+     <i class="music-icon fas fa-music text-2xl"></i>
     </div>
-    <div class="mb-4">
-     <img alt="Album cover with abstract art" class="w-full rounded-lg" height="200" src="/images/tun-talk-section-1.jpg" width="200"/>
+    <div class="album-cover-container mb-4">
+     <img alt="Album cover with abstract art" class="album-cover w-full rounded-lg" height="200" src="/images/tun-talk-section-1.jpg" width="200"/>
     </div>
-    <div class="text-center mb-4">
-     <h3 class="text-xl font-semibold">
-      Song Title
-     </h3>
-     <p class="text-gray-400">
-      weekend
-     </p>
+    <div class="song-info text-center mb-4">
+     <h3 class="song-title text-xl font-semibold">Song Title</h3>
+     <p class="artist-name text-gray-400">weekend</p>
     </div>
-    <div class="flex items-center justify-between mb-4">
-     <span class="text-gray-400" id="current-time">
-      0:00
-     </span>
-     <input class="w-full mx-4" id="progress-bar" max="100" type="range" value="0"/>
-     <span class="text-gray-400" id="duration">
-      3:45
-     </span>
+    <div class="progress-bar-container flex items-center justify-between mb-4">
+     <span class="current-time text-gray-400" id="current-time">0:00</span>
+     <input class="progress-bar w-full mx-4" id="progress-bar" max="100" type="range" value="0"/>
+     <span class="duration text-gray-400" id="duration">3:45</span>
     </div>
-    <div class="flex items-center justify-center space-x-4">
-     <button class="text-2xl focus:outline-none" id="prev-btn">
-      <i class="fas fa-backward">
-      </i>
+    <div class="player-controls flex items-center justify-center space-x-4">
+     <button class="control-button text-2xl focus:outline-none" id="prev-btn">
+      <i class="fas fa-backward"></i>
      </button>
-     <button class="text-4xl focus:outline-none" id="play-btn">
-      <i class="fas fa-play">
-      </i>
+     <button class="control-button text-4xl focus:outline-none" id="play-btn">
+      <i class="fas fa-play"></i>
      </button>
-     <button class="text-2xl focus:outline-none" id="next-btn">
-      <i class="fas fa-forward">
-      </i>
+     <button class="control-button text-2xl focus:outline-none" id="next-btn">
+      <i class="fas fa-forward"></i>
      </button>
     </div>
    </div>
   </main>
-  <section class="p-6 bg-gray-800 text-center" id="about">
-   <h2 class="text-2xl font-bold mb-4">
-    About Tune Talk
-   </h2>
-   <p class="text-gray-400">
+  <section class="about-section p-6 bg-gray-800 text-center" id="about">
+   <h2 class="section-title text-2xl font-bold mb-4">About Tune Talk</h2>
+   <p class="section-description text-gray-400">
     Tune Talk is a revolutionary music player that brings your favorite tunes to life. Enjoy seamless playback, high-quality audio, and an intuitive interface.
    </p>
   </section>
-  <section class="p-6 bg-gray-700 text-center" id="features">
-   <h2 class="text-2xl font-bold mb-4">
-    Features
-   </h2>
-   <ul class="text-gray-400">
-    <li>
-     High-quality audio playback
-    </li>
-    <li>
-     Intuitive user interface
-    </li>
-    <li>
-     Customizable playlists
-    </li>
-    <li>
-     Offline mode
-    </li>
+  <section class="features-section p-6 bg-gray-700 text-center" id="features">
+   <h2 class="section-title text-2xl font-bold mb-4">Features</h2>
+   <ul class="features-list text-gray-400">
+    <li>High-quality audio playback</li>
+    <li>Intuitive user interface</li>
+    <li>Customizable playlists</li>
+    <li>Offline mode</li>
    </ul>
   </section>
-  <section class="p-6 bg-gray-800 text-center" id="contact">
-   <h2 class="text-2xl font-bold mb-4">
-    Contact Us
-   </h2>
-   <p class="text-gray-400">
+  <section class="contact-section p-6 bg-gray-800 text-center" id="contact">
+   <h2 class="section-title text-2xl font-bold mb-4">Contact Us</h2>
+   <p class="contact-info text-gray-400">
     Have questions or feedback? Reach out to us at
-    <a class="text-blue-400" href="mailto:support@tunetalk.com">
-     support@tunetalk.com
-    </a>
-    .
+    <a class="contact-link text-blue-400" href="mailto:support@tunetalk.com">support@tunetalk.com</a>.
    </p>
   </section>
-  <section class="p-6 bg-gray-700 text-center" id="login">
-    <h2 class="text-2xl font-bold mb-4">
-       Login
-    </h2>
-    <div class="max-w-md mx-auto bg-gray-800 rounded-lg shadow-lg p-6">
-       <form class="space-y-4">
+  <section class="login-section p-6 bg-gray-700 text-center" id="login">
+    <h2 class="section-title text-2xl font-bold mb-4">Login</h2>
+    <div class="login-form-container max-w-md mx-auto bg-gray-800 rounded-lg shadow-lg p-6">
+       <form class="login-form space-y-4">
           <div>
-             <label class="block text-gray-400" for="email">
-                Email
-             </label>
-             <div class="relative">
-                <input class="w-full p-2 pl-10 rounded bg-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-green-500" id="email" required type="email" placeholder="Enter your email"/>
-                <i class="fas fa-envelope absolute left-3 top-3 text-gray-400"></i>
+             <label class="form-label block text-gray-400" for="email">Email</label>
+             <div class="input-container relative">
+                <input class="form-input w-full p-2 pl-10 rounded bg-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-green-500" id="email" required type="email" placeholder="Enter your email"/>
+                <i class="input-icon fas fa-envelope absolute left-3 top-3 text-gray-400"></i>
              </div>
           </div>
           <div>
-             <label class="block text-gray-400" for="password">
-                Password
-             </label>
-             <div class="relative">
-                <input class="w-full p-2 pl-10 rounded bg-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-green-500" id="password" style="margin:auto;" required type="password" placeholder="Enter your password" style="margin-left: 20px;"/>
-                <i class="fas fa-lock absolute left-3 top-3 text-gray-400"></i>
+             <label class="form-label block text-gray-400" for="password">Password</label>
+             <div class="input-container relative">
+                <input class="form-input w-full p-2 pl-10 rounded bg-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-green-500" id="password" required type="password" placeholder="Enter your password"/>
+                <i class="input-icon fas fa-lock absolute left-3 top-3 text-gray-400"></i>
              </div>
           </div>
-          <button class="w-full p-2  rounded bg-green-500 hover:bg-green-600 text-white transition duration-200" type="submit">
-             Login
-          </button>
+          <button class="submit-button w-full p-2 rounded bg-green-500 hover:bg-green-600 text-white transition duration-200" type="submit">Login</button>
        </form>
     </div>
  </section>
-  <audio id="audio" src="your-audio-file.mp3">
-  </audio>
-  
+  <audio id="audio" src="your-audio-file.mp3"></audio>
  </body>
 </html>

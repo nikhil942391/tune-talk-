@@ -1,12 +1,81 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
-
 body {
-    font-family: '', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: black;
 }
-div.sticky {
+
+.header-container {
     position: sticky;
     top: 0;
-  }
+}
+
+.search-bar {
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    padding-left: 2.5rem; /* Add padding to accommodate the icon */
+}
+
+.search-bar:focus {
+    border-color: #1DB954;
+    box-shadow: 0 0 5px rgba(29, 185, 84, 0.5);
+}
+
+.search-bar-container .fa-search {
+    pointer-events: none; /* Ensure the icon doesn't interfere with input */
+}
+
+.search-suggestions {
+    z-index: 10; /* Ensure dropdown appears above other elements */
+}
+
+.music-player-container {
+    background-color: #1a1a1a;
+}
+
+.player-controls button {
+    transition: transform 0.2s ease;
+}
+
+.player-controls button:hover {
+    transform: scale(1.1);
+}
+
+.section-title {
+    color: #1DB954;
+}
+
+.contact-link:hover {
+    color: #1DB954;
+    text-decoration: underline;
+}
+
+/* Light Mode Styles */
+.light-mode {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.light-mode .header-container,
+.light-mode .music-player-container,
+.light-mode .about-section,
+.light-mode .features-section,
+.light-mode .contact-section,
+.light-mode .login-section {
+    background-color: #f3f4f6;
+    color: #000000;
+}
+
+.light-mode .search-bar,
+.light-mode .form-input {
+    background-color: #e5e7eb;
+    color: #000000;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .music-player-container {
+        width: 90%;
+        padding: 1rem;
+    }
+}
